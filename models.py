@@ -27,7 +27,7 @@ class GameObject:
 
 class Spaceship(GameObject):
     MANEUVERABILITY = 3
-    ACCELERATION = 0.09
+    ACCELERATION = 0.3
     BULLET_SPEED = 3
 
     def __init__(self, position, create_bullet_callback):
@@ -45,6 +45,9 @@ class Spaceship(GameObject):
 
     def accelerate(self):
         self.velocity += self.direction * self.ACCELERATION
+
+    def decelerate(self):
+        self.velocity -= self.direction * self.ACCELERATION
 
     def draw(self, surface):
         angle = self.direction.angle_to(UP)
