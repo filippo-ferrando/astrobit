@@ -1,9 +1,31 @@
 import pygame
+import sys
+import serial, time
+import pygame as pg
+import threading, queue
+import time
 
 from models import Asteroid, Spaceship
 from utils import get_random_position, load_sprite, print_text
 
-
+class Read_Microbit(threading.Thread):
+    def __init__(self):
+        threading.Thread.__init__(self)
+        self._running = True
+      
+    def terminate(self):
+        self._running = False
+        
+    def run(self):
+        #serial config
+        port = "/dev/ttyACM0"
+        s = serial.Serial(port)
+        s.baudrate = 115200
+        while self._running:
+            data = s.readline().decode() 
+            acc = [float(x) for x in data[1:-3].split(",")]
+            q.put(acc)
+            #time.sleep(0.01)
 class SpaceRocks:
     MIN_ASTEROID_DISTANCE = 250
 
