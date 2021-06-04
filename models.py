@@ -26,8 +26,8 @@ class GameObject:
 
 
 class Spaceship(GameObject):
-    MANEUVERABILITY = 3
-    ACCELERATION = 0.3
+    MANEUVERABILITY = 4
+    ACCELERATION = 0.35
     BULLET_SPEED = 3
 
     def __init__(self, position, create_bullet_callback):

@@ -1,5 +1,4 @@
 import random
-
 from pygame import Color
 from pygame.image import load
 from pygame.math import Vector2

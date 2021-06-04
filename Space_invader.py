@@ -7,8 +7,9 @@ import threading, queue
 from models import Asteroid, Spaceship
 from utils import get_random_position, load_sprite, print_text
 
+#queue microbit instruction
 q = queue.Queue()
-class Read_Microbit(threading.Thread):
+class Read_Microbit(threading.Thread):  #read command send from the microbit
     def __init__(self):
         threading.Thread.__init__(self)
         self._running = True
@@ -73,9 +74,6 @@ class SpaceRocks:
                 rm.join()
             elif (q.get().startswith("shot")):
                 self.spaceship.shoot()
-
-        #is_key_pressed = pygame.key.get_pressed()
-
 
         if self.spaceship:
             if q.get().startswith("right"):
