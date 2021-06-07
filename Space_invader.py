@@ -70,7 +70,9 @@ class SpaceRocks:
     def _handle_input(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
+                pygame.quit()
                 quit()
+                rm.terminate()
                 rm.join()
             elif (q.get().startswith("shot")):
                 self.spaceship.shoot()
